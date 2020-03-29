@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2020 at 03:34 PM
+-- Generation Time: Mar 29, 2020 at 07:20 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -21,53 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `cms`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `advisor_details`
---
-
-CREATE TABLE `advisor_details` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `staff_id` varchar(255) NOT NULL,
-  `branch_in_charge` varchar(255) NOT NULL,
-  `sem_in_charge` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `advisor_details`
---
-
-INSERT INTO `advisor_details` (`id`, `username`, `staff_id`, `branch_in_charge`, `sem_in_charge`) VALUES
-(1, 'anju_advisor', 'a_cse_8_b', 'CSE', 8),
-(2, 'deepa_advisor', 'a_cse_8_a', 'CSE', 8);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `doc_path`
---
-
-CREATE TABLE `doc_path` (
-  `doc_id` int(11) NOT NULL,
-  `dtype` varchar(255) NOT NULL,
-  `owner` int(11) NOT NULL,
-  `path` varchar(550) NOT NULL,
-  `verified` tinyint(1) NOT NULL DEFAULT 0,
-  `remarks` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `doc_path`
---
-
-INSERT INTO `doc_path` (`doc_id`, `dtype`, `owner`, `path`, `verified`, `remarks`) VALUES
-(2, 'doc', 6079, 'C:/xampp/htdocs/cms/uploads/cdss.pdf', 1, 'Verified by anju_advisor'),
-(3, 'doc', 6079, 'C:/xampp/htdocs/cms/uploads/cdss1.pdf', 1, 'By anju_advisor'),
-(4, 'doc', 6079, 'C:/xampp/htdocs/cms/uploads/cdss2.pdf', 1, 'By anju_advisor'),
-(6, 'doc', 6079, 'C:/xampp/htdocs/cms/uploads/seminar_(1)3.pdf', 1, 'By madhu_hod');
 
 -- --------------------------------------------------------
 
@@ -96,38 +49,13 @@ CREATE TABLE `flows` (
 
 INSERT INTO `flows` (`id`, `request_id`, `submit`, `advisor`, `a_remarks`, `hod`, `h_remarks`, `principal`, `p_remarks`, `office`, `o_remarks`, `completed`) VALUES
 (41, 54, 1, 1, 'done By anju_advisor', 1, 'did By madhu_hod', 0, '', 0, '', 0),
-(42, 55, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(43, 56, 1, 0, '', 0, '', 0, '', 0, '', 0),
+(42, 55, 1, 1, 'ok By anju_advisor', 1, 'done By madhu_hod', 1, 'done By principal', 0, '', 0),
 (44, 57, 1, 1, 'ok By anju_advisor', 1, 'ok By madhu_hod', 0, '', 0, '', 0),
 (45, 58, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(46, 59, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(47, 60, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(48, 61, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(49, 62, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(50, 63, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(51, 64, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(52, 65, 1, 0, '', 0, '', 0, '', 0, '', 0),
-(53, 66, 1, 0, '', 0, '', 0, '', 0, '', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hod_details`
---
-
-CREATE TABLE `hod_details` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `staff_id` varchar(255) NOT NULL,
-  `branch_in_charge` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `hod_details`
---
-
-INSERT INTO `hod_details` (`id`, `username`, `staff_id`, `branch_in_charge`) VALUES
-(1, 'madhu_hod', 'h_cse', 'CSE');
+(46, 59, 1, 1, 'did By anju_advisor', 0, '', 0, '', 0, '', 0),
+(54, 67, 1, 0, '', 0, '', 0, '', 0, '', 0),
+(55, 68, 1, 0, '', 0, '', 0, '', 0, '', 0),
+(56, 69, 1, 0, '', 0, '', 0, '', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -151,17 +79,12 @@ CREATE TABLE `requests` (
 INSERT INTO `requests` (`request_id`, `type`, `owner`, `reason`, `remarks`, `submit_date`) VALUES
 (54, 'Course completion/studying', 6079, 'Scholarship', 'done', '2020-03-21 09:24:53'),
 (55, 'Transfer', 6079, 'Scholarship', 'chummaa', '2020-03-23 05:57:14'),
-(56, 'Transfer', 6079, 'Scholarship', 'chummaa', '2020-03-23 05:58:01'),
 (57, 'Transfer', 6079, 'Scholarship', 'chummaa', '2020-03-23 05:58:47'),
 (58, 'Transfer', 6079, 'Scholarship', 'chummaa', '2020-03-23 05:59:19'),
 (59, 'Refund of fees', 6079, 'Scholarship', '', '2020-03-23 06:03:50'),
-(60, 'Refund of fees', 6079, 'Scholarship', '', '2020-03-23 06:13:15'),
-(61, 'Refund of fees', 6079, 'Scholarship', '', '2020-03-23 06:14:02'),
-(62, 'Refund of fees', 6079, 'Scholarship', '', '2020-03-23 06:14:28'),
-(63, 'Refund of fees', 6079, 'Scholarship', '', '2020-03-23 06:15:42'),
-(64, 'Refund of fees', 6079, 'Scholarship', '', '2020-03-23 06:16:05'),
-(65, 'Refund of fees', 6079, 'Scholarship', '', '2020-03-23 06:16:36'),
-(66, 'Refund of fees', 6079, 'Scholarship', '', '2020-03-23 06:17:24');
+(67, 'Course completion/studying', 6000, 'Scholarship', 'done', '2020-03-28 14:38:25'),
+(68, 'Course completion/studying', 6000, 'Scholarship', 'done', '2020-03-28 14:39:47'),
+(69, 'Transfer', 6500, 'khkuhh', '', '2020-03-28 14:42:56');
 
 -- --------------------------------------------------------
 
@@ -258,7 +181,8 @@ CREATE TABLE `student_basics` (
 
 INSERT INTO `student_basics` (`id`, `admission_no`, `course`, `branch`, `semester`, `username`, `date_of_joining`, `date_of_leaving`, `univercity_reg_no`) VALUES
 (1, 6079, 'B Tech', 'CSE', 8, 'adhil', '2020-06-13', '0000-00-00', 'IDK16CS002'),
-(2, 6000, 'B tech', 'CSE', 8, 'baby', '2020-06-13', '0000-00-00', 'IDK16CS006');
+(2, 6000, 'B tech', 'CSE', 6, 'baby', '2020-06-13', '0000-00-00', 'IDK16CS006'),
+(3, 6500, 'B tech', 'IT', 8, 'it', '2020-03-03', '0000-00-00', 'IDK16IT002');
 
 -- --------------------------------------------------------
 
@@ -292,26 +216,6 @@ INSERT INTO `student_familys` (`id`, `admission_no`, `name_of_fm`, `occupation_o
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student_hostels`
---
-
-CREATE TABLE `student_hostels` (
-  `id` int(11) NOT NULL,
-  `admission_no` int(11) NOT NULL,
-  `hostel_name` varchar(255) NOT NULL,
-  `date_of_admission` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student_hostels`
---
-
-INSERT INTO `student_hostels` (`id`, `admission_no`, `hostel_name`, `date_of_admission`) VALUES
-(1, 6079, 'MH IV(Annex)', '2019-07-12');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `student_personals`
 --
 
@@ -334,7 +238,8 @@ CREATE TABLE `student_personals` (
 
 INSERT INTO `student_personals` (`id`, `admission_no`, `name`, `gender`, `dob`, `phone`, `mobile`, `address`, `email`, `category`) VALUES
 (1, 6079, 'Adhil Ahamed A.P', 'male', '1998-12-11', 0, 8593007310, 'Fathima Manzil,\r\nKodampuzha,\r\nP.O Farook College,\r\nCalicut,\r\n673632', 'adhilahamed484@gmail.com', 'OBC'),
-(2, 6000, 'amal baby', 'm', '2020-03-04', 8527419632, 8593007310, 'bhbjb', 'nlkjnj', 'oec');
+(2, 6000, 'amal baby', 'm', '2020-03-04', 8527419632, 8593007310, 'bhbjb', 'nlkjnj', 'oec'),
+(3, 6500, 'It', 'm', '1998-12-11', 7894561230, 789456123852, 'asfasv', 'sdgsf', 'asfa');
 
 -- --------------------------------------------------------
 
@@ -358,28 +263,18 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
 (3, 'madhu_hod', 'e10adc3949ba59abbe56e057f20f883e', 'hod'),
 (4, 'anju_advisor', 'e10adc3949ba59abbe56e057f20f883e', 'advisor'),
 (5, 'principal', 'e10adc3949ba59abbe56e057f20f883e', 'principal'),
-(6, 'office', 'e10adc3949ba59abbe56e057f20f883e', 'office'),
+(6, 'office_1', 'e10adc3949ba59abbe56e057f20f883e', 'office'),
 (7, 'deepa_advisor', 'e10adc3949ba59abbe56e057f20f883e', 'advisor'),
-(8, 'baby', 'e10adc3949ba59abbe56e057f20f883e', 'student');
+(8, 'baby', 'e10adc3949ba59abbe56e057f20f883e', 'student'),
+(9, 'office_2', 'e10adc3949ba59abbe56e057f20f883e', 'office'),
+(10, 'office_3', 'e10adc3949ba59abbe56e057f20f883e', 'office'),
+(11, 'office_4', 'e10adc3949ba59abbe56e057f20f883e', 'office'),
+(12, 'office_5', 'e10adc3949ba59abbe56e057f20f883e', 'office'),
+(13, 'it', 'e10adc3949ba59abbe56e057f20f883e', 'student');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `advisor_details`
---
-ALTER TABLE `advisor_details`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `staff_id` (`staff_id`),
-  ADD KEY `Forign_username_ad` (`username`);
-
---
--- Indexes for table `doc_path`
---
-ALTER TABLE `doc_path`
-  ADD PRIMARY KEY (`doc_id`),
-  ADD KEY `Forign_owner` (`owner`);
 
 --
 -- Indexes for table `flows`
@@ -389,19 +284,12 @@ ALTER TABLE `flows`
   ADD KEY `Forign_req` (`request_id`);
 
 --
--- Indexes for table `hod_details`
---
-ALTER TABLE `hod_details`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `staff_id` (`staff_id`);
-
---
 -- Indexes for table `requests`
 --
 ALTER TABLE `requests`
   ADD PRIMARY KEY (`request_id`),
-  ADD KEY `Forign_adm` (`owner`);
+  ADD KEY `Forign_adm` (`owner`),
+  ADD KEY `Forign_type` (`type`);
 
 --
 -- Indexes for table `student_academic_entrys`
@@ -440,13 +328,6 @@ ALTER TABLE `student_familys`
   ADD UNIQUE KEY `admission_no` (`admission_no`);
 
 --
--- Indexes for table `student_hostels`
---
-ALTER TABLE `student_hostels`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Forign_adm_host` (`admission_no`);
-
---
 -- Indexes for table `student_personals`
 --
 ALTER TABLE `student_personals`
@@ -465,34 +346,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `advisor_details`
---
-ALTER TABLE `advisor_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `doc_path`
---
-ALTER TABLE `doc_path`
-  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `flows`
 --
 ALTER TABLE `flows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-
---
--- AUTO_INCREMENT for table `hod_details`
---
-ALTER TABLE `hod_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `student_academic_entrys`
@@ -516,7 +379,7 @@ ALTER TABLE `student_admissions`
 -- AUTO_INCREMENT for table `student_basics`
 --
 ALTER TABLE `student_basics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student_familys`
@@ -525,38 +388,20 @@ ALTER TABLE `student_familys`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `student_hostels`
---
-ALTER TABLE `student_hostels`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `student_personals`
 --
 ALTER TABLE `student_personals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `advisor_details`
---
-ALTER TABLE `advisor_details`
-  ADD CONSTRAINT `Forign_username_ad` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `doc_path`
---
-ALTER TABLE `doc_path`
-  ADD CONSTRAINT `Forign_owner` FOREIGN KEY (`owner`) REFERENCES `student_basics` (`admission_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `flows`
@@ -565,16 +410,11 @@ ALTER TABLE `flows`
   ADD CONSTRAINT `Forign_req` FOREIGN KEY (`request_id`) REFERENCES `requests` (`request_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `hod_details`
---
-ALTER TABLE `hod_details`
-  ADD CONSTRAINT `Forign_username_hod` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `requests`
 --
 ALTER TABLE `requests`
-  ADD CONSTRAINT `Forign_adm` FOREIGN KEY (`owner`) REFERENCES `student_basics` (`admission_no`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Forign_adm` FOREIGN KEY (`owner`) REFERENCES `student_basics` (`admission_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Forign_type` FOREIGN KEY (`type`) REFERENCES `request_types` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student_academic_entrys`
@@ -605,12 +445,6 @@ ALTER TABLE `student_basics`
 --
 ALTER TABLE `student_familys`
   ADD CONSTRAINT `Forign_adm_fam` FOREIGN KEY (`admission_no`) REFERENCES `student_basics` (`admission_no`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `student_hostels`
---
-ALTER TABLE `student_hostels`
-  ADD CONSTRAINT `Forign_adm_host` FOREIGN KEY (`admission_no`) REFERENCES `student_basics` (`admission_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student_personals`
